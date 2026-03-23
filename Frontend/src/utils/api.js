@@ -1,4 +1,4 @@
-const BASE_URL ='https://employee-management-system-1-b1ii.onrender.com';
+const BASE_URL ='https://employee-management-system-1-b1ii.onrender.com/api';
 
 const getToken = () => localStorage.getItem('token');
 
