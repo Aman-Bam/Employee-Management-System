@@ -18,7 +18,7 @@
 ---
 
 ## 🔗 Live Application
-**Experience the live app:** [https://employment-system-zeta.vercel.app/](https://employment-system-zeta.vercel.app/)
+**Experience the live app:** [https://employment-system-zeta.vercel.app](https://employment-system-zeta.vercel.app)
 
 > Note: The live backend server might take a few seconds to spin up due to cold starts on free hosting tiers.
 
