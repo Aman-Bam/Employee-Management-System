@@ -12,14 +12,6 @@
   <p>A modern, full-stack Role-Based Employee and Task Management Dashboard built with the MERN stack and Tailwind CSS v4.</p>
   
 </div>
-
----
-
-## 🔗 Live Application
-**Experience the live app:** [https://employment-system-zeta.vercel.app](https://employment-system-zeta.vercel.app)
-
-> Note: The live backend server might take a few seconds to spin up due to cold starts on free hosting tiers.
-
 ---
 
 ## 📖 About the Project
