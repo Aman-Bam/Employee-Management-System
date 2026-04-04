@@ -12,7 +12,6 @@
   <p>A modern, full-stack Role-Based Employee and Task Management Dashboard built with the MERN stack and Tailwind CSS v4.</p>
   
 </div>
----
 
 ## 📖 About the Project
 
