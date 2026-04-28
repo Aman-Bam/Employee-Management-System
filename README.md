@@ -10,19 +10,8 @@
 
   <h1>🚀 Employment Management System</h1>
   <p>A modern, full-stack Role-Based Employee and Task Management Dashboard built with the MERN stack and Tailwind CSS v4.</p>
-
-  [![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://employment-system-zeta.vercel.app/)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  
 </div>
-
----
-
-## 🔗 Live Application
-**Experience the live app:** [https://employment-system-zeta.vercel.app](https://employment-system-zeta.vercel.app)
-
-> Note: The live backend server might take a few seconds to spin up due to cold starts on free hosting tiers.
-
----
 
 ## 📖 About the Project
 
