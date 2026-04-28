@@ -4,11 +4,14 @@ import './index.css'
 import './App.css'
 import { App } from './App.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
+import { ThemeProvider } from './context/ThemeContext.jsx'
 
 createRoot(document.getElementById('root')).render(
     <AuthProvider>
+      <ThemeProvider>
         <BrowserRouter>
             <App />
         </BrowserRouter>
+      </ThemeProvider>
     </AuthProvider>
 )

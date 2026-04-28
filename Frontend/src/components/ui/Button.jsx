@@ -10,7 +10,7 @@ const Button = ({
   const baseStyles = "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 outline-none";
   
   const variants = {
-    primary: "bg-primary hover:bg-primary-hover text-zinc-950 shadow-[0_0_15px_rgba(6,182,212,0.3)]",
+    primary: "bg-primary hover:bg-primary-hover text-white shadow-md shadow-primary/30",
     secondary: "bg-surface hover:bg-surface-hover text-text-main border border-border shadow-sm",
     danger: "bg-danger/10 hover:bg-danger/20 text-danger border border-danger/20",
     outline: "border border-primary/50 hover:border-primary text-primary hover:bg-primary/10",

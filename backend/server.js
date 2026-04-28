@@ -1,6 +1,5 @@
-const dns = require("dns");
-
-dns.setServers(["8.8.8.8", "1.1.1.1"]);
+const dns = require('dns');
+dns.setServers(['1.1.1.1']);
 
 require('dotenv').config();
 const express = require('express');
@@ -23,10 +22,12 @@ mongoose.connect(process.env.MONGO_URI)
 const authRoutes = require('./routes/authRoutes');
 const employeeRoutes = require('./routes/employeeRoutes');
 const taskRoutes = require('./routes/taskRoutes');
+const attendanceRoutes = require('./routes/attendanceRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/employees', employeeRoutes);
 app.use('/api/tasks', taskRoutes);
+app.use('/api/attendance', attendanceRoutes);
 
 // Optional: A simple route to test the server
 app.get('/', (req, res) => {

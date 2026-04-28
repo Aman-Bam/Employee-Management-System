@@ -1,15 +1,20 @@
 import React from 'react';
-import Header from '../../other/Header';
+import DashboardLayout from '../ui/DashboardLayout';
+import AttendanceOverview from '../ui/AttendanceOverview';
 import TaskList from '../../other/TaskList';
 
-const EmployeeDashboard = ({ data, changeUser }) => {
+const EmployeeDashboard = ({ data }) => {
   return (
-    <div className="min-h-screen bg-background text-text-main flex flex-col pb-12">
-      <Header changeUser={changeUser} data={data} />
-      <main className="flex-1 w-full max-w-[1400px] mx-auto p-6 md:p-8 flex flex-col gap-8 animate-fade-in">
-        <TaskList data={data} changeUser={changeUser} />
-      </main>
-    </div>
+    <DashboardLayout>
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+        <div className="lg:col-span-3">
+          <TaskList data={data} />
+        </div>
+        <div className="lg:col-span-1">
+          <AttendanceOverview data={data} />
+        </div>
+      </div>
+    </DashboardLayout>
   );
 };
 

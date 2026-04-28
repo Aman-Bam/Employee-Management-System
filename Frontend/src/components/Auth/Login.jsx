@@ -7,25 +7,28 @@ const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitHandler = (e) => {
+  const [loading, setLoading] = useState(false);
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    handleLogin(email, password);
-    setEmail('');
-    setPassword('');
+    setLoading(true);
+    await handleLogin(email, password);
+    setLoading(false);
+    // Inputs are only cleared or kept depending on whether navigate happened
   };
 
   return (
     <div className="w-screen h-screen bg-background flex items-center justify-center relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/20 dark:bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-accent/20 dark:bg-accent/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Glass morphism container */}
-      <Card className="relative w-full max-w-[440px] mx-4 z-10 p-8 sm:p-10 backdrop-blur-2xl bg-surface/80 border-white/5 animate-slide-up shadow-2xl">
+      <Card className="relative w-full max-w-[440px] mx-4 z-10 backdrop-blur-3xl bg-surface/80 dark:bg-surface/80 border-white/20 dark:border-white/5 animate-slide-up shadow-2xl">
         {/* Glow behind card */}
-        <div className="absolute -inset-0.5 bg-gradient-to-br from-primary/30 via-transparent to-accent/30 rounded-[1.1rem] -z-10 opacity-50 blur-sm"></div>
+        <div className="absolute -inset-0.5 bg-gradient-to-br from-primary/40 via-transparent to-accent/40 rounded-[1.1rem] -z-10 opacity-70 blur-sm dark:opacity-50"></div>
         
         <form onSubmit={submitHandler} className="flex flex-col gap-6">
           {/* Header */}
@@ -54,8 +57,8 @@ const Login = ({ handleLogin }) => {
             />
           </div>
 
-          <Button type="submit" size="lg" className="mt-4">
-            Sign In
+          <Button type="submit" size="lg" className="mt-4" disabled={loading}>
+            {loading ? 'Signing In...' : 'Sign In'}
           </Button>
         </form>
       </Card>

@@ -26,7 +26,7 @@ function TaskCard({ task, onEdit, onDelete }) {
   const st  = STATUS_CONFIG[task.status]    || STATUS_CONFIG.Pending
 
   return (
-    <div className={`bg-slate-900/70 border ${cat.border} rounded-2xl p-5 backdrop-blur-xl transition-all duration-200 hover:-translate-y-1 ${cat.glow} ${cat.hoverGlow} relative overflow-hidden flex flex-col`}>
+    <div className={`bg-surface border border-border rounded-2xl p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg relative overflow-hidden flex flex-col`}>
       {/* top accent */}
       <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${cat.barColor} rounded-t-2xl`} />
 
@@ -39,19 +39,19 @@ function TaskCard({ task, onEdit, onDelete }) {
       </div>
 
       {/* title */}
-      <h3 className="text-slate-100 font-bold text-[15px] mb-1.5 leading-tight">{task.title}</h3>
+      <h3 className="text-text-main font-bold text-[15px] mb-1.5 leading-tight">{task.title}</h3>
 
       {/* description */}
-      <p className="text-slate-400 text-[12.5px] leading-relaxed mb-3.5 flex-grow line-clamp-2">
+      <p className="text-text-muted text-[12.5px] leading-relaxed mb-3.5 flex-grow line-clamp-2">
         {task.description}
       </p>
 
       {/* meta */}
-      <div className="flex flex-col gap-1.5 mb-3.5 pb-3.5 border-b border-white/5">
-        <div className="flex items-center gap-1.5 text-slate-400 text-xs">
+      <div className="flex flex-col gap-1.5 mb-3.5 pb-3.5 border-b border-border">
+        <div className="flex items-center gap-1.5 text-text-muted text-xs">
           <User size={13} /> <span>{task.assignedTo}</span>
         </div>
-        <div className="flex items-center gap-1.5 text-slate-400 text-xs">
+        <div className="flex items-center gap-1.5 text-text-muted text-xs">
           <Calendar size={13} /> <span>{task.dueDate}</span>
         </div>
       </div>
@@ -87,18 +87,18 @@ function CategorySection({ category, tasks, onEdit, onDelete }) {
       {/* Category Header */}
       <div
         onClick={() => setCollapsed(c => !c)}
-        className={`flex items-center gap-3 ${collapsed ? 'mb-0' : 'mb-5'} cursor-pointer select-none ${cfg.bg} border ${cfg.border} rounded-2xl px-5 py-3.5 backdrop-blur-md`}
+        className={`flex items-center gap-3 ${collapsed ? 'mb-0' : 'mb-5'} cursor-pointer select-none bg-surface-hover/20 border border-border rounded-2xl px-5 py-3.5`}
       >
         <span className="text-xl">{cfg.icon}</span>
-        <span className={`${cfg.color} font-bold text-[17px] tracking-tight`}>{category}</span>
-        <span className="text-slate-400 text-[13px] ml-0.5">— {tasks.length} task{tasks.length !== 1 ? "s" : ""}</span>
+        <span className={`text-text-main font-bold text-[17px] tracking-tight`}>{category}</span>
+        <span className="text-text-muted text-[13px] ml-0.5">— {tasks.length} task{tasks.length !== 1 ? "s" : ""}</span>
 
         {/* mini counters */}
         <div className="ml-auto flex gap-2 items-center">
           {completed  > 0 && <span className="bg-emerald-400/10 border border-emerald-400/30 rounded-full px-2.5 py-0.5 text-[11px] font-bold text-emerald-400">{completed} done</span>}
           {inProgress > 0 && <span className="bg-blue-400/10 border border-blue-400/30 rounded-full px-2.5 py-0.5 text-[11px] font-bold text-blue-400">{inProgress} active</span>}
-          {pending    > 0 && <span className="bg-yellow-400/10 border border-yellow-400/30 rounded-full px-2.5 py-0.5 text-[11px] font-bold text-yellow-400">{pending} pending</span>}
-          <span className="text-slate-400 text-sm ml-1 transition-transform duration-200">
+          {pending    > 0 && <span className="bg-yellow-400/10 border border-yellow-400/30 rounded-full px-2.5 py-0.5 text-[11px] font-bold text-yellow-500">{pending} pending</span>}
+          <span className="text-text-muted text-sm ml-1 transition-transform duration-200">
             {collapsed ? <ChevronRight size={18} /> : <ChevronDown size={18} />}
           </span>
         </div>
@@ -247,14 +247,14 @@ function AllTask() {
         {/* ── Stats row ── */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 mb-7">
           {[
-            { label:"Total Tasks",  value: total,  color:"text-slate-400", bg:"bg-slate-400/10", border:"border-slate-400/15" },
-            { label:"Completed",    value: done,   color:"text-emerald-400", bg:"bg-emerald-400/10", border:"border-emerald-400/20"  },
-            { label:"In Progress",  value: active, color:"text-blue-400", bg:"bg-blue-400/10", border:"border-blue-400/20"  },
-            { label:"Pending",      value: pending,color:"text-yellow-400", bg:"bg-yellow-400/10", border:"border-yellow-400/20"  },
+            { label:"Total Tasks",  value: total,  color:"text-text-main", bg:"bg-surface", border:"border-border" },
+            { label:"Completed",    value: done,   color:"text-emerald-500", bg:"bg-emerald-500/10", border:"border-emerald-500/20"  },
+            { label:"In Progress",  value: active, color:"text-blue-500", bg:"bg-blue-500/10", border:"border-blue-500/20"  },
+            { label:"Pending",      value: pending,color:"text-yellow-500", bg:"bg-yellow-500/10", border:"border-yellow-500/20"  },
           ].map(s => (
-            <div key={s.label} className={`${s.bg} border ${s.border} rounded-2xl p-4 backdrop-blur-md`}>
+            <div key={s.label} className={`${s.bg} border ${s.border} rounded-2xl p-4`}>
               <div className={`text-[26px] font-extrabold leading-none ${s.color}`}>{s.value}</div>
-              <div className="text-xs text-slate-400 mt-1.5 font-medium">{s.label}</div>
+              <div className="text-xs text-text-muted mt-1.5 font-medium">{s.label}</div>
             </div>
           ))}
         </div>
@@ -263,12 +263,12 @@ function AllTask() {
         <div className="flex flex-col md:flex-row gap-3 mb-8 items-center">
           {/* search */}
           <div className="flex-1 w-full min-w-[200px] relative">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted" />
             <input
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Search tasks or assignees…"
-              className="w-full bg-slate-900/80 border border-white/10 rounded-xl py-2.5 pr-3 pl-10 text-slate-300 text-[13px] outline-none transition-colors focus:border-emerald-400/40 focus:bg-slate-900"
+              className="w-full bg-surface border border-border rounded-xl py-2.5 pr-3 pl-10 text-text-main text-[13px] outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary/20"
             />
           </div>
 
@@ -283,8 +283,8 @@ function AllTask() {
                   onClick={() => setFilter(s)} 
                   className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-150 cursor-pointer ${
                     active 
-                      ? `bg-${col}-400/15 border border-${col}-400/40 text-${col}-400` 
-                      : "bg-slate-900/60 border border-white/5 text-slate-400 hover:bg-slate-800"
+                      ? `bg-${col}-500/15 border border-${col}-500/40 text-${col}-600 dark:text-${col}-400` 
+                      : "bg-surface border border-border text-text-muted hover:bg-surface-hover"
                   }`}
                 >
                   {s}
@@ -312,9 +312,9 @@ function AllTask() {
 
       {/* ── Edit Modal ── */}
       {editTask && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-6">
-          <div className="bg-slate-900 border border-white/10 rounded-2xl p-7 w-full max-w-md shadow-[0_24px_80px_rgba(0,0,0,0.6)]">
-            <h2 className="text-slate-100 text-lg font-bold mb-5">Edit Task</h2>
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-6">
+          <div className="bg-surface border border-border rounded-2xl p-7 w-full max-w-md shadow-2xl">
+            <h2 className="text-text-main text-lg font-bold mb-5">Edit Task</h2>
             <div className="flex flex-col gap-3.5">
               {[
                 { key:"title",      label:"Title",       type:"text"   },
@@ -323,21 +323,21 @@ function AllTask() {
                 { key:"dueDate",    label:"Due Date",    type:"date"   },
               ].map(f => (
                 <div key={f.key}>
-                  <label className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider block mb-1.5">{f.label}</label>
+                  <label className="text-text-muted text-[11px] font-semibold uppercase tracking-wider block mb-1.5">{f.label}</label>
                   <input
                     type={f.type}
                     value={editTask[f.key]}
                     onChange={e => setEditTask(t => ({ ...t, [f.key]: e.target.value }))}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-slate-200 text-[13px] outline-none transition-colors focus:bg-white/10 focus:border-white/20"
+                    className="w-full bg-background border border-border rounded-xl px-3.5 py-2.5 text-text-main text-[13px] outline-none transition-colors focus:border-primary/50"
                   />
                 </div>
               ))}
               <div>
-                <label className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider block mb-1.5">Status</label>
+                <label className="text-text-muted text-[11px] font-semibold uppercase tracking-wider block mb-1.5">Status</label>
                 <select
                   value={editTask.status}
                   onChange={e => setEditTask(t => ({ ...t, status: e.target.value }))}
-                  className="w-full bg-slate-800 border border-white/10 rounded-xl px-3.5 py-2.5 text-slate-200 text-[13px] outline-none transition-colors focus:bg-slate-700"
+                  className="w-full bg-background border border-border rounded-xl px-3.5 py-2.5 text-text-main text-[13px] outline-none transition-colors"
                 >
                   <option value="Pending">Pending</option>
                   <option value="In Progress">In Progress</option>
@@ -348,13 +348,13 @@ function AllTask() {
             <div className="flex gap-2.5 mt-6">
               <button 
                 onClick={handleSave} 
-                className="flex-1 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-xl py-2.5 text-white font-bold text-[13px] shadow-lg shadow-emerald-500/20 transition-transform active:scale-95"
+                className="flex-1 bg-primary hover:bg-primary-hover rounded-xl py-2.5 text-white font-bold text-[13px] transition-colors"
               >
                 Save Changes
               </button>
               <button 
                 onClick={() => setEditTask(null)} 
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl py-2.5 text-slate-400 font-semibold text-[13px] hover:bg-white/10 transition-colors"
+                className="flex-1 bg-surface-hover border border-border rounded-xl py-2.5 text-text-muted font-semibold text-[13px] hover:text-text-main transition-colors"
               >
                 Cancel
               </button>

@@ -22,7 +22,7 @@ const Input = React.forwardRef(({
       <input
         ref={ref}
         id={inputId}
-        className={`w-full bg-surface border rounded-xl px-4 py-3.5 text-text-main text-sm outline-none transition-all duration-200 placeholder:text-zinc-600 focus:bg-primary/5 focus:border-primary/50 focus:ring-1 focus:ring-primary/50 shadow-sm ${error ? 'border-danger/50 focus:border-danger focus:ring-danger/50' : 'border-border hover:border-zinc-600'}`}
+        className={`w-full bg-surface border rounded-xl px-4 py-3.5 text-text-main text-sm outline-none transition-all duration-200 placeholder:text-text-muted focus:bg-primary/5 focus:border-primary/50 focus:ring-1 focus:ring-primary/50 shadow-sm ${error ? 'border-danger/50 focus:border-danger focus:ring-danger/50' : 'border-border hover:border-text-muted'}`}
         {...props}
       />
       {error && <p className="mt-1.5 text-[11px] text-danger font-medium animate-fade-in">{error}</p>}

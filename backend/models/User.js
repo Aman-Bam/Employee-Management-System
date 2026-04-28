@@ -12,12 +12,18 @@ const taskSchema = new mongoose.Schema({
     category: { type: String, required: true }
 });
 
+const attendanceSchema = new mongoose.Schema({
+    date: { type: String, required: true }, // Format: YYYY-MM-DD
+    status: { type: String, enum: ['Present', 'Absent', 'Late'], required: true }
+});
+
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: { type: String, enum: ['admin', 'employee'], required: true },
-    tasks: [taskSchema] // Embedded tasks
+    tasks: [taskSchema], // Embedded tasks
+    attendance: [attendanceSchema] // Embedded attendance
 }, {
     timestamps: true
 });
